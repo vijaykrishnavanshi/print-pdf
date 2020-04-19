@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
  * @param {Object} req Cloud Function request context.
  * @param {Object} res Cloud Function response context.
  */
-exports.screenshot = async (req, res) => {
+exports.printPDF = async (req, res) => {
     const url = req.query.url;
   
     if (!url) {
@@ -20,10 +20,10 @@ exports.screenshot = async (req, res) => {
     });
     const page = await browser.newPage();
     await page.goto(url);
-    const imageBuffer = await page.screenshot();
+    const pdfBuffer = await page.pdf();
     browser.close();
   
-    res.set('Content-Type', 'image/png');
-    res.send(imageBuffer);
+    res.set('Content-Type', 'application/pdf');
+    res.send(pdfBuffer);
   };
   

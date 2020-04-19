@@ -1,12 +1,12 @@
 'use strict';
 
-const {screenshot} = require('./screenshot.js')
+const { printPDF } = require('./print-pdf')
 
 const express = require('express');
 const puppeteer = require('puppeteer');
 const app = express();
 
-app.use(screenshot);
+app.use(printPDF);
 
 const server = app.listen(process.env.PORT || 8080, err => {
     if (err) return console.error(err);
