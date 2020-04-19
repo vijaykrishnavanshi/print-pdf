@@ -25,5 +25,5 @@ exports.printPDF = async (req, res) => {
   
     res.set('Content-Type', 'application/pdf');
     res.send(pdfBuffer);
-  };
+};
   
